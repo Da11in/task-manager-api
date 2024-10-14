@@ -1,0 +1,12 @@
+@baseURL = http://localhost:3001
+
+GET {{baseURL}}/me HTTP/1.1
+
+###
+
+POST {{baseURL}}/token HTTP/1.1
+content-type: application/json
+
+{
+
+}
