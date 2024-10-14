@@ -8,9 +8,6 @@ export class AuthController {
 
   @Post('token')
   createToken(@Body() createTokenDto: CreateTokenDto) {
-    while (true) {
-      console.log('Something');
-    }
     return this.authService.createToken(createTokenDto);
   }
 }
