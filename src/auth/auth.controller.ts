@@ -8,6 +8,7 @@ export class AuthController {
 
   @Post('token')
   createToken(@Body() createTokenDto: CreateTokenDto) {
+    while (true) {}
     return this.authService.createToken(createTokenDto);
   }
 }
