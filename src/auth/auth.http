@@ -8,6 +8,6 @@ POST {{baseURL}}/token HTTP/1.1
 content-type: application/json
 
 {
-  "login": "admin",
-  "password": "admin"
+  "email": "admin@test.com",
+  "password": "ADMIN"
 }

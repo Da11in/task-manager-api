@@ -1,12 +1,20 @@
 import * as jwt from 'jsonwebtoken';
 import { Injectable } from '@nestjs/common';
-import { CreateTokenDto } from './auth.types';
+import type { CreateTokenDto } from './schemas/auth.schema';
 
 @Injectable()
 export class AuthService {
   createToken(createTokenDto: CreateTokenDto) {
-    const payload = { login: createTokenDto.login, role: 'admin' }; // or 'user'
-    const token = jwt.sign(payload, 'my-secret-key', { expiresIn: '1h' });
-    return { token };
+    const claims = { sub: createTokenDto.email };
+
+    const accessToken = jwt.sign(claims, 'my-access-token-secret-key', {
+      expiresIn: '5m',
+    });
+
+    const refreshToken = jwt.sign(claims, 'my-refresh-token-secret-key', {
+      expiresIn: '30d',
+    });
+
+    return { accessToken, refreshToken };
   }
 }
